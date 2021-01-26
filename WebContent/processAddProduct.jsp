@@ -19,7 +19,7 @@ dto : Data Transfer Object 의 줄임말로써 계층간의 데이터를 교환�
 <%
 
 	String filename= "";
-	String realFolder = "C:\\java102\\upload";
+	String realFolder = "C:\\java13\\upload";
 	int maxSize = 5 *1024 *1024;
 	String encType = "utf-8";
 	
