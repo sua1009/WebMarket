@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="dto.Product" %>
+<%@ page import="dao.ProductRepository" %>
 <jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <!DOCTYPE html>
@@ -18,10 +19,12 @@
 		</div>
 	</div>
 	<%
-	/* products.jsp에서 get방식으로 request 내장 객체에 데이터를 저장하여 전송 */
-	String id= request.getParameter("id");
-	/* 매개 변수로 입력한 상품 id와 동일한 정보가  */
-	Product product = productDAO.getProductById(id);
+		/* products.jsp에서 get방식으로 request 내장 객체에 데이터를 저장하여 전송 */
+		String id= request.getParameter("id");
+		/* 매개 변수로 입력한 상품 id와 동일한 정보가 있을 경우 반환 */
+		/* ProductRepository 클래스 타입의 변수 dao에 ProductRepository클래스  */
+		ProductRepository dao = ProductRepository.getInstance();
+		Product product = dao.getProductById(id);
 	%>
 	<div class="container">
 		<div class="row">

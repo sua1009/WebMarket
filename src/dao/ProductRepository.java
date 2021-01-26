@@ -7,6 +7,18 @@ import dto.Product;
 public class ProductRepository {
 	
 		private ArrayList<Product> listOfProducts = new ArrayList<Product>();
+		private static ProductRepository instance = new ProductRepository();
+		
+//		싱글톤 패턴 사용
+/*		
+ * 싱글톤 : 프로그램 상에서단 하나의 객체만 생성하여 모두 공유하여 사용하는 방식, 
+ 	클래스 내부에서 private 접근 제어자를 사용하여 외부에서는 해당 클래스의 객체를 생성할 수 없도록 하고, 
+ 	내부에서 해당 클래스의 객체를 생성하고 static으로 정적 멤버로 선언한 후 
+ 	getter를 통해서 내부에서 선언된 객체만 공유하여 사용하는 방법 
+*/
+		public static ProductRepository getInstance() {
+			return instance;
+		}
 		
 		public ProductRepository() {
 			Product phone = new Product("P1234", "iPhone 6s", 800000);
@@ -61,6 +73,11 @@ public class ProductRepository {
 				}
 			}
 			return productById;
+		}
+		
+//		상품 목록에 데이터를 추가 
+		public void addProduct(Product product) {
+			listOfProducts.add(product);
 		}
 		
 
